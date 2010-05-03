@@ -1,0 +1,15 @@
+= stylesheet_link_tag 'invitations/index', :cache => true
+
+%div{ :class => "title" }
+  Недавние приглашения
+  - if @invitations.any?
+    |
+    = link_to "Позвать остальных друзей?", new_invitation_path
+
+- if @invitations.any?
+  %div{ :id => "invitations_list" }
+    = render @invitations
+- else
+  %div{ :class => "sugget" }
+    Вы никого не пригласили.
+    = link_to "Исправить это?", new_invitation_path

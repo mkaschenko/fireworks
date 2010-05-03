@@ -1,0 +1,16 @@
+.invitation {
+  width: 25%;
+  float: left;
+}
+
+.invitation p {
+  text-align: center;
+}
+
+.sugget {
+  font-size: 250%;
+  text-align: center;
+  height: 300px;
+  position: relative;
+  top: 200px;
+}
