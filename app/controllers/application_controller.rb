@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   ensure_authenticated_to_facebook
 
-  attr_accessor :current_user
+  attr_reader :current_user
   helper_attr :current_user
 
   before_filter :set_current_user
@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_user
-    self.current_user = User.find_or_create_by_facebook_id(facebook_session.user.uid)
+    @current_user = User.find_or_create_by_facebook_id(facebook_session.user.uid)
   end
 end
