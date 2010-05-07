@@ -6,6 +6,6 @@ class Invitation < ActiveRecord::Base
   named_scope :latest, :order => 'created_at DESC', :limit => 32
 
   def self.recipients
-    all.collect(&:recipient)
+    find(:all, :select => 'recipient').collect(&:recipient)
   end
 end
