@@ -3,22 +3,13 @@
 %html{ html_attrs("en-US"), "xmlns:fb" => "http://www.facebook.com/2008/fbml" }
   %head
     = stylesheet_link_tag "application", :cache => true
+    = javascript_include_tag "jquery", :cache => true
     = yield :head
 
   %body
     = yield
 
     %div{ :id => "footer" }
-      %script{ :src => "http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" }
-      :javascript
-        window.onload = function () {
-          FB_RequireFeatures(["XFBML"], function() { 
-            FB.Facebook.init("#{facebooker_config['api_key']}", "/xd_receiver.htm");
-          });
-
-          FB_RequireFeatures(["CanvasUtil"], function() {
-            FB.XdComm.Server.init("/xd_receiver.htm");
-            FB.CanvasClient.startTimerToSizeToContent();
-            FB.CanvasClient.syncUrl();
-          });
-        };
+      = javascript_include_tag "http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US", :cache => true
+      = javascript_include_tag "application", :cache => true
+      = yield :footer
