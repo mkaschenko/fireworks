@@ -1,4 +1,5 @@
-= stylesheet_link_tag "invitations/index", :cache => true
+- content_for :head do
+  = stylesheet_link_tag "invitations/index", :cache => true
 
 %div{ :class => "title" }
   Недавние приглашения
