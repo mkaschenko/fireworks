@@ -1,5 +1,7 @@
+- recipient = invitation.recipient
+
 %div{ :class => "invitation" }
   %p
-    = fb_profile_pic(invitation.recipient)
+    = link_to fb_profile_pic(recipient, { :linked => false }), fb_user_url(recipient), { :target => "_top" }
   %p
-    = fb_name(invitation.recipient)
+    = link_to fb_name(recipient, { :linked => false }), fb_user_url(recipient), { :target => "_top" }

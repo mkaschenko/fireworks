@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.invitation p img {
+  color: white;
+}
+
 .sugget {
   font-size: 250%;
   text-align: center;

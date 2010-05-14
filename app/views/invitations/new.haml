@@ -2,4 +2,4 @@
   %script{ :type => "text/fbml" }
     - fb_multi_friend_request("Fireworks", "Кого пригласить в Fireworks?", invitations_url, { :showborder => true, :email_invite => false, :exclude_ids => @invited_users }) do
       Простое и полезное приложение для iPhone Fireworks
-      = fb_req_choice "Принять", fb_url(fireworks_path)
+      = fb_req_choice "Принять", fb_app_url(fireworks_path)
