@@ -2,16 +2,20 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
 
   attr_reader :current_user
-  helper_attr :current_user, :fb_url
+  helper_attr :current_user, :fb_app_url
 
-  ensure_authenticated_to_facebook
-  # ensure_application_is_installed_by_facebook_user
+  before_filter :ensure_authenticated_to_facebook, :after_facebook_login, :set_current_user
 
-  before_filter :set_current_user
+  def after_facebook_login
+    if params[:next]
+      url = params[:next].gsub('http://fireworks.no-ip.org:3000/', fb_app_url)
+      top_redirect_to url
+    end
+  end
 
   protected
 
-  def fb_url(relative_path = "")
+  def fb_app_url(relative_path = "")
     apps_url = 'http://apps.facebook.com'
     canvas_page_name = 'sn_fireworks'
     File.join(apps_url, canvas_page_name, relative_path)
